@@ -2,6 +2,7 @@
 
     'Attributes
 
+    'Public sea As New Sea
     Dim survivor As New Survivor
     Dim Shark As New Shark
     Dim time As Integer = 0
@@ -19,6 +20,7 @@
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
+        'Me.Controls.Add(Global.Marine_Rescue.Sea.pan_sea)
 
     End Sub
 
@@ -44,7 +46,7 @@
     End Sub
 
     'History
-    Private Sub Tsmi_history_Click(sender As Object, e As EventArgs) Handles tsmi_history.Click
+    Private Sub Tsmi_history_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
         MessageBox.Show("Un buque sufrió un accidente y los sobrevivientes están" & vbNewLine &
                         "en el mar. Hay que rescatarlos en una lancha de goma.")
     End Sub

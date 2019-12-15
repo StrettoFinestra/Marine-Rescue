@@ -6,11 +6,12 @@
     Public Const matter As Boolean = True
     Public Const form As Boolean = True
     Public Const type_universe As String = "F.U.W.E" 'Finite Universe Without Edge
-    Private pan_sea As PictureBox
+    Public pan_sea As Panel
 
     'Construct
     Public Sub New()
 
+        Sea_Generator()
 
     End Sub
 
@@ -20,16 +21,14 @@
     Public Sub Sea_Generator()
 
         'Attributes
-        Dim pan_sea As PictureBox
 
-        'Data Process
-        pan_sea = New PictureBox()
-        pan_sea.Size = New Size(60, 60)
-        'pan_sea.Location = New Point(Rnd.Next(Marine_Rescue.sea.Width - pan_sea.Width - 10), Rnd.Next((Marine_Rescue.sea.Height - 150) - pan_sea.Height - 35))
-        'pan_sea.Image = Image.FromFile()
-        pan_sea.BackColor = System.Drawing.Color.Transparent
-        pan_sea.SizeMode = PictureBoxSizeMode.StretchImage
-        Marine_Rescue.sea.Controls.Add(pan_sea)
+        'Sea Properties
+        'Me.pan_sea.BackgroundImage = Global.Marine_Rescue.My.Resources.Resources.Sea
+        'Me.pan_sea.Location = New System.Drawing.Point(0, 95)
+        'Me.pan_sea.Name = "Sea"
+        'Me.pan_sea.Size = New System.Drawing.Size(1913, 1090)
+        'Me.pan_sea.TabIndex = 4
+
 
     End Sub
 
