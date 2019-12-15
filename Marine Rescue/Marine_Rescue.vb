@@ -2,9 +2,9 @@
 
     'Attributes
 
-    'Public sea As New Sea
+    Dim sea As New Sea
     Dim survivor As New Survivor
-    Dim Shark As New Shark
+    Dim shark As New Shark
     Dim time As Integer = 0
     Dim Points As Integer = 0
     Dim level As Integer = 0
@@ -20,7 +20,6 @@
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        'Me.Controls.Add(Global.Marine_Rescue.Sea.pan_sea)
 
     End Sub
 
@@ -96,6 +95,9 @@
                 ts_txt_seating.Text = "3"
                 ts_txt_fuel.Text = "60"
                 ts_txt_velocimeter.Text = "0 px/s"
+
+                'Sea Generator
+                sea.Sea_Generator()
                 Game_LevelUp()
 
         End Select
@@ -104,14 +106,15 @@
 
     Sub Game_LevelUp()
 
-        'Call to Shark Generator and level up
+
+        'Call to shark Generator and level up
         'Level 0 its only for reference
         level += 1
         ts_txt_level.Text = CStr(level)
 
         'Validations
         If sharkcount < 10 Then
-            Shark.Shark_Generator(sharkcount, level)
+            shark.Shark_Generator(sharkcount, level)
             sharkcount += 1
         End If
 

@@ -44,10 +44,9 @@ Partial Class Marine_Rescue
         Me.ts_txt_velocimeter = New System.Windows.Forms.ToolStripTextBox()
         Me.timer_time = New System.Windows.Forms.Timer(Me.components)
         Me.txt_time = New System.Windows.Forms.TextBox()
-        Me.sea = New System.Windows.Forms.Panel()
+        Me.pan_sea = New System.Windows.Forms.Panel()
         Me.ms_option_menu.SuspendLayout()
         Me.ts_ui.SuspendLayout()
-        Me.sea.SuspendLayout()
         Me.SuspendLayout()
         '
         'ms_option_menu
@@ -202,23 +201,23 @@ Partial Class Marine_Rescue
         '
         Me.txt_time.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_time.Location = New System.Drawing.Point(-2668, 1277)
+        Me.txt_time.Location = New System.Drawing.Point(1603, 726)
         Me.txt_time.Name = "txt_time"
         Me.txt_time.Size = New System.Drawing.Size(100, 31)
         Me.txt_time.TabIndex = 3
         '
-        'sea
+        'pan_sea
         '
-        Me.sea.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.pan_sea.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.sea.BackColor = System.Drawing.SystemColors.Highlight
-        Me.sea.BackgroundImage = Global.Marine_Rescue.My.Resources.Resources.Sea
-        Me.sea.Controls.Add(Me.txt_time)
-        Me.sea.Location = New System.Drawing.Point(0, 81)
-        Me.sea.Name = "sea"
-        Me.sea.Size = New System.Drawing.Size(1368, 844)
-        Me.sea.TabIndex = 4
+        Me.pan_sea.BackColor = System.Drawing.SystemColors.Highlight
+        Me.pan_sea.BackgroundImage = Global.Marine_Rescue.My.Resources.Resources.Sea
+        Me.pan_sea.Location = New System.Drawing.Point(0, 81)
+        Me.pan_sea.Name = "pan_sea"
+        Me.pan_sea.Size = New System.Drawing.Size(1368, 844)
+        Me.pan_sea.TabIndex = 4
+        Me.pan_sea.Visible = False
         '
         'Marine_Rescue
         '
@@ -226,7 +225,8 @@ Partial Class Marine_Rescue
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1900, 925)
-        Me.Controls.Add(Me.sea)
+        Me.Controls.Add(Me.pan_sea)
+        Me.Controls.Add(Me.txt_time)
         Me.Controls.Add(Me.ts_ui)
         Me.Controls.Add(Me.ms_option_menu)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -239,8 +239,6 @@ Partial Class Marine_Rescue
         Me.ms_option_menu.PerformLayout()
         Me.ts_ui.ResumeLayout(False)
         Me.ts_ui.PerformLayout()
-        Me.sea.ResumeLayout(False)
-        Me.sea.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -265,6 +263,6 @@ Partial Class Marine_Rescue
     Friend WithEvents tsmi_Instructions As ToolStripMenuItem
     Friend WithEvents timer_time As Timer
     Friend WithEvents txt_time As TextBox
-    Friend WithEvents sea As Panel
     Friend WithEvents ToolStripMenuItem4 As ToolStripMenuItem
+    Friend WithEvents pan_sea As Panel
 End Class
