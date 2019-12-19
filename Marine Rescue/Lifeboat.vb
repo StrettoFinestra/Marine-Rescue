@@ -1,14 +1,17 @@
-﻿Public Class Shark
+﻿Public Class Lifeboat
 
     'Attributes
     Dim vpic_tmp(9) As PictureBox
-    Dim vsource_images() As String = {"images\Sharpedo.png", "images\Mega_Sharpedo.png"}
+    Dim vsource_images() As String = {"images\Lifeboat_L.png", "images\Lifeboat_L_Down.png", "images\Lifeboat_L_Up.png",
+                                      "images\Lifeboat_LD_Down.png", "images\Lifeboat_LD_Up.png",
+                                      "images\Lifeboat_R.png", "images\Lifeboat_R_Down.png", "images\Lifeboat_R_Up.png",
+                                      "images\Lifeboat_RD_Down.png", "images\Lifeboat_RD_Up.png"}
     Dim rnd As Random = New Random()
 
     'Construct
     Public Sub New()
 
-        Console.WriteLine("Instancia de Shark, realizada correctamente")
+        Console.WriteLine("Instancia de Lifeboat, realizada correctamente")
 
     End Sub
 

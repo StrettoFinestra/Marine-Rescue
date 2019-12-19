@@ -8,6 +8,7 @@
     'Construct
     Public Sub New()
 
+        Console.WriteLine("Instancia de Survivor, realizada correctamente")
 
     End Sub
 
@@ -18,7 +19,7 @@
 
         If counter < 10 Then
 
-            'Attributes
+            'Work Variables
             Dim pic_tmp As PictureBox
 
             'Survivor Properties

@@ -9,20 +9,19 @@
 
     'Construct
     Public Sub New()
-
-
+        Console.WriteLine("Instancia de Sea, realizada correctamente")
     End Sub
-
     'Methods
 
     'Generator 
     Public Sub Sea_Generator()
 
-        'Attributes
+        If ((generation = True) And (form = True) And (matter = True) And (type_universe = "F.U.W.E")) Then
 
-        'Sea Properties
-        Marine_Rescue.pan_sea.Visible = True
+            'Sea Properties
+            Marine_Rescue.pan_sea.Visible = True
 
+        End If
 
     End Sub
 

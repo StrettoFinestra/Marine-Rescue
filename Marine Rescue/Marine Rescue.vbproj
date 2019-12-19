@@ -73,6 +73,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoastGuardShip.vb" />
+    <Compile Include="Lifeboat.vb" />
     <Compile Include="Sea.vb" />
     <Compile Include="Shark.vb" />
     <Compile Include="Marine_Rescue.vb">
@@ -127,6 +129,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Images\Castaway_F.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Images\CoastGuard_Ship.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

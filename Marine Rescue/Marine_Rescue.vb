@@ -5,6 +5,7 @@
     Dim sea As New Sea
     Dim survivor As New Survivor
     Dim shark As New Shark
+    Dim ship As New CoastGuardShip
     Dim time As Integer = 0
     Dim Points As Integer = 0
     Dim level As Integer = 0
@@ -42,6 +43,8 @@
     'Instructions
     Private Sub Tsmi_Instructions_Click(sender As Object, e As EventArgs) Handles tsmi_Instructions.Click
         Game_LevelUp()
+        ship.setTest(False)
+
     End Sub
 
     'History
@@ -61,6 +64,8 @@
     End Sub
 
     'Timers
+
+    'Survivor Timer
     Private Sub Timer_time_Tick(sender As Object, e As EventArgs) Handles timer_time.Tick
 
         'Attributes
@@ -72,6 +77,14 @@
             survivor.Survivor_Generator(survivorcount)
             survivorcount += 1
         End If
+
+    End Sub
+
+    'CoastGuard Ship Timer
+
+    Private Sub Timer_cg_ship_Tick(sender As Object, e As EventArgs) Handles timer_cg_ship.Tick
+
+        ship.Ship_Movement()
 
     End Sub
 
@@ -96,8 +109,14 @@
                 ts_txt_fuel.Text = "60"
                 ts_txt_velocimeter.Text = "0 px/s"
 
-                'Sea Generator
+                'Elements Generator Controller
                 sea.Sea_Generator()
+                ship.Ship_Generator()
+
+                'Elements Movement Controller
+                timer_cg_ship.Start()
+
+                'Game Level Controller
                 Game_LevelUp()
 
         End Select
@@ -119,6 +138,5 @@
         End If
 
     End Sub
-
 
 End Class

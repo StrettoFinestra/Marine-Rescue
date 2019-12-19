@@ -27,6 +27,11 @@ Marine Rescue
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:Marine_Rescue.My.Resources.Resources.CoastGuard_Ship">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:Marine_Rescue.My.Resources.Resources.Sea">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
