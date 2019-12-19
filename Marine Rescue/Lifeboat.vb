@@ -31,7 +31,7 @@
         'cg_ship_coordinates
         'Lifeboat Properties
         pic_tmp_lifeboat = New PictureBox()
-        pic_tmp_lifeboat.Size = New Size(70, 70)
+        pic_tmp_lifeboat.Size = New Size(50, 120)
         pic_tmp_lifeboat.Location = New Point(0, 0)
         sentinel_vsource = 0
         pic_tmp_lifeboat.Image = Image.FromFile(vsource_images(sentinel_vsource))
@@ -83,57 +83,65 @@
 
         'When Lifeboat go to North  
         If diry < 0 And dirx = 0 Then
-            pic_tmp_lifeboat.Size = New Size(70, 70)
+            pic_tmp_lifeboat.Size = New Size(50, 120)
             sentinel_vsource = 0
+            Console.WriteLine("North" & sentinel_vsource)
             pic_tmp_lifeboat.Image = Image.FromFile(vsource_images(sentinel_vsource))
         End If
 
-        'When Lifeboat go to NorthEast  
+        'When Lifeboat go to SouthEast     
         If diry > 0 And dirx > 0 Then
-            sentinel_vsource = 1
-            pic_tmp_lifeboat.Size = New Size(50, 70)
+            sentinel_vsource = 3
+            Console.WriteLine("SouthEast" & sentinel_vsource)
+            pic_tmp_lifeboat.Size = New Size(100, 120)
             pic_tmp_lifeboat.Image = Image.FromFile(vsource_images(sentinel_vsource))
         End If
 
         'When Lifeboat go to East  
         If dirx > 0 And diry = 0 Then
-            pic_tmp_lifeboat.Size = New Size(50, 70)
             sentinel_vsource = 2
+            Console.WriteLine("East" & sentinel_vsource)
+            pic_tmp_lifeboat.Size = New Size(120, 60)
             pic_tmp_lifeboat.Image = Image.FromFile(vsource_images(sentinel_vsource))
         End If
 
-        'When Lifeboat go to SouthEast  
+        'When Lifeboat go to NorthEast  
         If diry < 0 And dirx > 0 Then
-            pic_tmp_lifeboat.Size = New Size(50, 70)
-            sentinel_vsource = 3
+            sentinel_vsource = 1
+            Console.WriteLine("NorthEast" & sentinel_vsource)
+            pic_tmp_lifeboat.Size = New Size(100, 120)
             pic_tmp_lifeboat.Image = Image.FromFile(vsource_images(sentinel_vsource))
         End If
 
         'When Lifeboat go to South 
         If diry > 0 And dirx = 0 Then
-            pic_tmp_lifeboat.Size = New Size(70, 70)
             sentinel_vsource = 4
+            Console.WriteLine("South" & sentinel_vsource)
+            pic_tmp_lifeboat.Size = New Size(50, 120)
             pic_tmp_lifeboat.Image = Image.FromFile(vsource_images(sentinel_vsource))
         End If
 
-        'When Lifeboat go to SouthWest  
+        'When Lifeboat go to NorthWest  
         If dirx < 0 And diry < 0 Then
-            pic_tmp_lifeboat.Size = New Size(50, 70)
-            sentinel_vsource = 5
+            sentinel_vsource = 7
+            Console.WriteLine("NorthWest" & sentinel_vsource)
+            pic_tmp_lifeboat.Size = New Size(100, 120)
             pic_tmp_lifeboat.Image = Image.FromFile(vsource_images(sentinel_vsource))
         End If
 
         'When Lifeboat go to West  
         If dirx < 0 And diry = 0 Then
-            pic_tmp_lifeboat.Size = New Size(50, 70)
             sentinel_vsource = 6
+            Console.WriteLine("West" & sentinel_vsource)
+            pic_tmp_lifeboat.Size = New Size(120, 60)
             pic_tmp_lifeboat.Image = Image.FromFile(vsource_images(sentinel_vsource))
         End If
 
-        'When Lifeboat go to NorthWest  
+        'When Lifeboat go to SouthWest 
         If dirx < 0 And diry > 0 Then
-            pic_tmp_lifeboat.Size = New Size(50, 70)
-            sentinel_vsource = 7
+            sentinel_vsource = 5
+            Console.WriteLine("SouthWest" & sentinel_vsource)
+            pic_tmp_lifeboat.Size = New Size(100, 120)
             pic_tmp_lifeboat.Image = Image.FromFile(vsource_images(sentinel_vsource))
         End If
 
