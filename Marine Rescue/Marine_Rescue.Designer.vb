@@ -50,8 +50,11 @@ Partial Class Marine_Rescue
         Me.timer_survivor = New System.Windows.Forms.Timer(Me.components)
         Me.timer_shark = New System.Windows.Forms.Timer(Me.components)
         Me.timer_lifeboat = New System.Windows.Forms.Timer(Me.components)
+        Me.pic_cg_ship = New System.Windows.Forms.PictureBox()
         Me.ms_option_menu.SuspendLayout()
         Me.ts_ui.SuspendLayout()
+        Me.pan_sea.SuspendLayout()
+        CType(Me.pic_cg_ship, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ms_option_menu
@@ -62,7 +65,7 @@ Partial Class Marine_Rescue
         Me.ms_option_menu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmi_start, Me.tsmi_newgame, Me.tsmi_about, Me.tsmi_Instructions, Me.ToolStripMenuItem4})
         Me.ms_option_menu.Location = New System.Drawing.Point(0, 0)
         Me.ms_option_menu.Name = "ms_option_menu"
-        Me.ms_option_menu.Size = New System.Drawing.Size(1864, 54)
+        Me.ms_option_menu.Size = New System.Drawing.Size(2032, 54)
         Me.ms_option_menu.TabIndex = 2
         Me.ms_option_menu.Text = "Opciones"
         '
@@ -159,7 +162,7 @@ Partial Class Marine_Rescue
         Me.ts_ui.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ts_lbl_points, Me.ts_txt_points, Me.ts_lbl_level, Me.ts_txt_level, Me.ts_lbl_lifes, Me.ts_txt_lifes, Me.ts_lbl_seating, Me.ts_txt_seating, Me.ts_lbl_fuel, Me.ts_txt_fuel, Me.ts_lbl_velocimeter, Me.ts_txt_velocimeter, Me.ts_lbl_time, Me.ts_txt_time})
         Me.ts_ui.Location = New System.Drawing.Point(0, 54)
         Me.ts_ui.Name = "ts_ui"
-        Me.ts_ui.Size = New System.Drawing.Size(1864, 52)
+        Me.ts_ui.Size = New System.Drawing.Size(2032, 52)
         Me.ts_ui.TabIndex = 1
         Me.ts_ui.Text = "Marcadores"
         '
@@ -195,7 +198,7 @@ Partial Class Marine_Rescue
         Me.ts_txt_velocimeter.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ts_txt_velocimeter.Name = "ts_txt_velocimeter"
         Me.ts_txt_velocimeter.ReadOnly = True
-        Me.ts_txt_velocimeter.Size = New System.Drawing.Size(80, 39)
+        Me.ts_txt_velocimeter.Size = New System.Drawing.Size(80, 52)
         '
         'ts_lbl_time
         '
@@ -221,34 +224,47 @@ Partial Class Marine_Rescue
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pan_sea.BackColor = System.Drawing.SystemColors.Highlight
         Me.pan_sea.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pan_sea.Controls.Add(Me.pic_cg_ship)
         Me.pan_sea.Location = New System.Drawing.Point(0, 109)
         Me.pan_sea.Name = "pan_sea"
-        Me.pan_sea.Size = New System.Drawing.Size(1864, 761)
+        Me.pan_sea.Size = New System.Drawing.Size(2032, 1047)
         Me.pan_sea.TabIndex = 4
         Me.pan_sea.Visible = False
         '
         'timer_cg_ship
         '
-        Me.timer_cg_ship.Interval = 500
+        Me.timer_cg_ship.Interval = 200
         '
         'timer_survivor
         '
-        Me.timer_survivor.Interval = 1000
+        Me.timer_survivor.Interval = 250
         '
         'timer_shark
         '
-        Me.timer_shark.Interval = 1000
+        Me.timer_shark.Interval = 250
         '
         'timer_lifeboat
         '
         Me.timer_lifeboat.Interval = 1000
+        '
+        'pic_cg_ship
+        '
+        Me.pic_cg_ship.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.pic_cg_ship.BackColor = System.Drawing.Color.Transparent
+        Me.pic_cg_ship.Location = New System.Drawing.Point(1635, 851)
+        Me.pic_cg_ship.Name = "pic_cg_ship"
+        Me.pic_cg_ship.Size = New System.Drawing.Size(397, 196)
+        Me.pic_cg_ship.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pic_cg_ship.TabIndex = 0
+        Me.pic_cg_ship.TabStop = False
+        Me.pic_cg_ship.Visible = False
         '
         'Marine_Rescue
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1864, 868)
+        Me.ClientSize = New System.Drawing.Size(2032, 1154)
         Me.Controls.Add(Me.pan_sea)
         Me.Controls.Add(Me.ts_ui)
         Me.Controls.Add(Me.ms_option_menu)
@@ -261,6 +277,8 @@ Partial Class Marine_Rescue
         Me.ms_option_menu.PerformLayout()
         Me.ts_ui.ResumeLayout(False)
         Me.ts_ui.PerformLayout()
+        Me.pan_sea.ResumeLayout(False)
+        CType(Me.pic_cg_ship, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -292,4 +310,5 @@ Partial Class Marine_Rescue
     Friend WithEvents timer_survivor As Timer
     Friend WithEvents timer_shark As Timer
     Friend WithEvents timer_lifeboat As Timer
+    Friend WithEvents pic_cg_ship As PictureBox
 End Class

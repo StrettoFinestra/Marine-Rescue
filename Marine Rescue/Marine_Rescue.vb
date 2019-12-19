@@ -2,18 +2,27 @@
 
     'Attributes
 
-    Dim sea As New Sea
-    Dim survivor As New Survivor
-    Dim shark As New Shark
-    Dim ship As New CoastGuardShip
-    Dim time As Integer = 0
-    Dim points As Integer = 0
-    Dim level As Integer = 0
-    Dim lifes As Integer = 0
-    Dim fuel As Integer = 0
-    Dim sharkcount As Integer = 0
-    Dim survivorcount As Integer = 0
-    Dim seatscount As Integer = 0
+    'Objects
+    Public sea As New Sea
+    Public castaway As New Survivor
+    Public shark As New Shark
+    Public ship As New CoastGuardShip
+
+    'Data Structures
+    Public vpic_castaway(0) As Survivor
+    Public vpic_shark(0) As Shark
+
+    'Socoreboard Variables
+    Public time As Integer = 0
+    Public points As Integer = 0
+    Public level As Integer = 0
+    Public lifes As Integer = 0
+    Public fuel As Integer = 0
+
+    'Counters
+    Public sharkcount As Integer = 0
+    Public castawaycount As Integer = 0
+    Public seatscount As Integer = 0
 
     'Construct
     Public Sub New()
@@ -44,7 +53,6 @@
     'Instructions
     Private Sub Tsmi_Instructions_Click(sender As Object, e As EventArgs) Handles tsmi_Instructions.Click
         Game_LevelUp()
-        ship.setTest(False)
 
     End Sub
 
@@ -79,20 +87,40 @@
         ts_txt_time.Text = CStr(time)
 
         'Validations
-        If survivorcount < 10 And time Mod 5 = 0 Then
-            survivor.Survivor_Generator(survivorcount)
-            survivorcount += 1
+        If castawaycount < 10 And time Mod 5 = 0 Then
+            Game_NewCastaway()
         End If
 
     End Sub
 
-    'Survivor Timer
+    'castaway Timer
+
     Private Sub Timer_survivor_Tick(sender As Object, e As EventArgs) Handles timer_survivor.Tick
+
+        'Movement of all Castaway on the Sea
+
+        If castawaycount > 0 Then
+
+            For Each castaway As Survivor In vpic_castaway
+                castaway.Survivor_Movement()
+            Next
+
+        End If
 
     End Sub
 
     'Shark Timer
     Private Sub Timer_shark_Tick(sender As Object, e As EventArgs) Handles timer_shark.Tick
+
+        'Movement of all Sharkpedo on the Sea
+
+        If sharkcount > 0 Then
+
+            For Each sharkpedo As Shark In vpic_shark
+                sharkpedo.Shark_Movement()
+            Next
+
+        End If
 
     End Sub
 
@@ -105,6 +133,38 @@
     Private Sub Timer_cg_ship_Tick(sender As Object, e As EventArgs) Handles timer_cg_ship.Tick
 
         ship.Ship_Movement()
+
+    End Sub
+
+    '################################################################################################
+    'Game Logic
+
+    'Castaway Generator
+
+    Sub Game_NewCastaway()
+
+        If castawaycount <= 10 Then
+            ReDim Preserve vpic_castaway(castawaycount)
+            vpic_castaway(castawaycount) = New Survivor
+            vpic_castaway(castawaycount).Survivor_Generator()
+            'vpic_castaway(castawaycount) = New Survivor
+            'vpic_castaway(castawaycount).Survivor_Generator()
+            castawaycount += 1
+
+        End If
+
+    End Sub
+
+    Sub Game_NewSharpedo()
+
+        If sharkcount <= 10 Then
+            ReDim Preserve vpic_shark(sharkcount)
+            vpic_shark(sharkcount) = New Shark
+            vpic_shark(sharkcount).Shark_Generator(sharkcount, level)
+            'vpic_castaway(castawaycount) = New Survivor
+            'vpic_castaway(castawaycount).Survivor_Generator()
+            sharkcount += 1
+        End If
 
     End Sub
 
@@ -128,18 +188,20 @@
                 sea.Sea_Generator()
                 ship.Ship_Generator()
 
-                'Elements Movement Controller
-                timer_cg_ship.Start()
-
                 'Game Level Controller
                 Game_LevelUp()
+
+                'Timers Start
+                timer_survivor.Start()
+                timer_shark.Start()
+                timer_cg_ship.Start()
+
 
         End Select
 
     End Sub
 
     Sub Game_LevelUp()
-
 
         'Call to shark Generator and level up
         'Level 0 its only for reference
@@ -148,8 +210,7 @@
 
         'Validations
         If sharkcount < 10 Then
-            shark.Shark_Generator(sharkcount, level)
-            sharkcount += 1
+            Game_NewSharpedo()
         End If
 
     End Sub
