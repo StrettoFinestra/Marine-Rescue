@@ -54,24 +54,28 @@
         If y <= 0 Then
             y = 0
             diry = -diry
+            'Lifeboat_SpeedLimit()
         End If
 
         'When Lifeboat go to Down
         If y >= Marine_Rescue.pan_sea.Height - pic_tmp_lifeboat.Height Then
             y = Marine_Rescue.pan_sea.Height - pic_tmp_lifeboat.Height
             diry = -diry
+            'Lifeboat_SpeedLimit()
         End If
 
         'When Lifeboat go to Left
         If x <= 0 Then
             x = 0
             dirx = -dirx
+            'Lifeboat_SpeedLimit()
         End If
 
         'When Lifeboat go to Right
         If x >= Marine_Rescue.pan_sea.Width - pic_tmp_lifeboat.Width Then
             x = Marine_Rescue.pan_sea.Width - pic_tmp_lifeboat.Width
             dirx = -dirx
+            'Lifeboat_SpeedLimit()
         End If
 
 
@@ -136,6 +140,25 @@
             sentinel_vsource = 7
             pic_tmp_lifeboat.Image = Image.FromFile(vsource_images(sentinel_vsource))
         End If
+
+    End Sub
+
+    Public Sub Lifeboat_Ricochet()
+        dirx = -dirx
+        diry = -diry
+    End Sub
+
+    Public Sub Lifeboat_SpeedLimit()
+
+        'Work Variables
+        Dim percent As Double = 0.5
+        Dim reductionx, reductiony As Integer
+
+        'Reduction of current Speed
+        reductionx = dirx * percent
+        reductiony = diry * percent
+        dirx = reductionx
+        diry = reductiony
 
     End Sub
 

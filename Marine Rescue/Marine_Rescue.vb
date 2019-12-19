@@ -101,9 +101,10 @@
         Game_TsRefresh()
 
         'Fuel
-        fuel -= 1
-        Game_TsRefresh()
-
+        If fuel <= 60 And fuel > 0 Then
+            fuel -= 1
+            Game_TsRefresh()
+        End If
 
         'Validations
         If castawaycount < 10 And time Mod 5 = 0 Then
@@ -130,7 +131,7 @@
                 For Each shipwrecks As Survivor In vpic_castaway
 
                     If castaway.pic_tmp_survivor.Bounds.IntersectsWith(shipwrecks.pic_tmp_survivor.Bounds) And
-                        castaway.pic_tmp_survivor.Name <> shipwrecks.pic_tmp_survivor.Name Then
+                        castaway.pic_tmp_survivor.Name <> shipwrecks.pic_tmp_survivor.Name And shipwrecks.pic_tmp_survivor.AccessibleName <> "hidden" Then
 
                         'if intersects and different from himself, ricochet
                         castaway.Survivor_Ricochet()
@@ -138,6 +139,12 @@
                     End If
 
                 Next
+
+                'Coast Guard Ship Ricochet
+                'It should be noted that the image is not rectangular
+                If castaway.pic_tmp_survivor.Bounds.IntersectsWith(pic_cg_ship.Bounds) Then
+                    castaway.Survivor_Ricochet()
+                End If
 
             Next
 
@@ -175,6 +182,12 @@
 
                 Next
 
+                'Coast Guard Ship Ricochet
+                'It should be noted that the image is not rectangular
+                If sharkpedo.pic_tmp_shark.Bounds.IntersectsWith(pic_cg_ship.Bounds) Then
+                    sharkpedo.Shark_Ricochet()
+                End If
+
                 'If exist a Castaway
                 If castawaycount > 0 Then
 
@@ -206,8 +219,42 @@
 
         'If exist a Lifeboat on the Sea
         If lifeboatcount > 0 Then
+
+            'Movement
             lifeboat.Lifeboat_Movement()
+
+            'Power Engine Validator
+            If fuel = 0 Then
+                lifeboat.powerengine = False
+            End If
+
+            'Save Castaway
+            'If exist a Castaway
+            If castawaycount > 0 Then
+
+                For Each castaway As Survivor In vpic_castaway
+
+                    If lifeboat.pic_tmp_lifeboat.Bounds.IntersectsWith(castaway.pic_tmp_survivor.Bounds) And
+                    castaway.pic_tmp_survivor.AccessibleName <> "hidden" Then
+
+                        'Disappears Castaway, becomes a spirit
+                        castaway.pic_tmp_survivor.AccessibleName = "hidden"
+                        castaway.pic_tmp_survivor.Image = Nothing
+
+                    End If
+
+                Next
+
+            End If
+
+            'Coast Guard Ship Ricochet
+            'It should be noted that the image is not rectangular
+            If lifeboat.pic_tmp_lifeboat.Bounds.IntersectsWith(pic_cg_ship.Bounds) Then
+                lifeboat.Lifeboat_Ricochet()
+            End If
+
         End If
+
 
     End Sub
 

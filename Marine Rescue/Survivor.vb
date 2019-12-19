@@ -68,7 +68,7 @@
         End If
 
         'When Survivors go to Left
-        If x <= 0 Then 'Or Marine_Rescue.ship.pic_tmp_cg_ship.Bounds.IntersectsWith(pic_tmp_survivor.Bounds)
+        If x <= 0 Then
 
             x = 0
             dirx = -dirx
