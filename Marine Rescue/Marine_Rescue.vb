@@ -281,51 +281,51 @@
                     'When Lifeboat go to Up
                     Case Keys.Up
 
-                        lifeboat.diry -= 1
+                        lifeboat.diry -= 5
                         If lifeboat.diry < 0 Then
-                            lb_speedometer = Val(lifeboat.diry * (-1))
+                            lb_speedometer = lifeboat.diry * (-1)
                             Game_TsRefresh()
                         Else
-                            lb_speedometer = Val(lifeboat.diry)
+                            lb_speedometer = lifeboat.diry
                             Game_TsRefresh()
                         End If
 
                     'When Lifeboat go to Down
                     Case Keys.Down
 
-                        lifeboat.diry += 1
+                        lifeboat.diry += 5
                         If lifeboat.diry < 0 Then
-                            lb_speedometer = Val(lifeboat.diry * (-1))
+                            lb_speedometer = lifeboat.diry * (-1)
                             Game_TsRefresh()
                         Else
-                            lb_speedometer = Val(lifeboat.diry)
+                            lb_speedometer = lifeboat.diry
                             Game_TsRefresh()
                         End If
 
                    'When Lifeboat go to Left
                     Case Keys.Left
 
-                        lifeboat.dirx -= 1
+                        lifeboat.dirx -= 5
                         If lifeboat.dirx < 0 Then
-                            lb_speedometer = Val(lifeboat.dirx * (-1))
+                            lb_speedometer = lifeboat.dirx * (-1)
                             Game_TsRefresh()
                         Else
-                            lb_speedometer = Val(lifeboat.dirx)
+                            lb_speedometer = lifeboat.dirx
                             Game_TsRefresh()
                         End If
 
                     'When Lifeboat go to Right
                     Case Keys.Right
 
-                        lifeboat.dirx += 1
-                        lb_speedometer = Val(lifeboat.dirx)
+                        lifeboat.dirx += 5
+                        lb_speedometer = lifeboat.dirx
                         Game_TsRefresh()
 
                         If lifeboat.dirx < 0 Then
-                            lb_speedometer = Val(lifeboat.dirx * (-1))
+                            lb_speedometer = lifeboat.dirx * (-1)
                             Game_TsRefresh()
                         Else
-                            lb_speedometer = Val(lifeboat.dirx)
+                            lb_speedometer = lifeboat.dirx
                             Game_TsRefresh()
                         End If
 
