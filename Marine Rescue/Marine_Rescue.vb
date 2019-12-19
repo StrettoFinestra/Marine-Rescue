@@ -50,19 +50,19 @@
     Private Sub AcercaDeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles tsmi_start.Click
 
         ToolStripMenuItem_Estatus(False)
-        Game_Estatus(1)
+        Game_Status(1)
 
     End Sub
 
     'New Game
     Private Sub Tsmi_newgame_Click(sender As Object, e As EventArgs) Handles tsmi_newgame.Click
-
+        Game_Status(2)
     End Sub
 
     'Instructions
     Private Sub Tsmi_Instructions_Click(sender As Object, e As EventArgs) Handles tsmi_Instructions.Click
         Game_NewCastaway()
-        'Game_LevelUp()
+        Game_LevelUp()
 
     End Sub
 
@@ -228,6 +228,11 @@
                 lifeboat.powerengine = False
             End If
 
+            'Game Over
+            If lifes = 0 Then
+                Game_Status(0)
+            End If
+
             'Save Castaway
             'If exist a Castaway
             If castawaycount > 0 Then
@@ -237,9 +242,17 @@
                     If lifeboat.pic_tmp_lifeboat.Bounds.IntersectsWith(castaway.pic_tmp_survivor.Bounds) And
                     castaway.pic_tmp_survivor.AccessibleName <> "hidden" Then
 
-                        'Disappears Castaway, becomes a spirit
-                        castaway.pic_tmp_survivor.AccessibleName = "hidden"
-                        castaway.pic_tmp_survivor.Image = Nothing
+                        If seatscount < 3 Then
+
+                            'Capacity increment
+                            seatscount += 1
+                            Game_TsRefresh()
+
+                            'Disappears Castaway, becomes a spirit
+                            castaway.pic_tmp_survivor.AccessibleName = "hidden"
+                            castaway.pic_tmp_survivor.Image = Nothing
+
+                        End If
 
                     End If
 
@@ -247,10 +260,77 @@
 
             End If
 
-            'Coast Guard Ship Ricochet
-            'It should be noted that the image is not rectangular
-            If lifeboat.pic_tmp_lifeboat.Bounds.IntersectsWith(pic_cg_ship.Bounds) Then
-                lifeboat.Lifeboat_Ricochet()
+
+
+            'Death
+            'If exist a Sharkpedo
+            If sharkcount > 0 And lifes > 0 Then
+
+                For Each sharkpedo As Shark In vpic_shark
+
+                    If lifeboat.pic_tmp_lifeboat.Bounds.IntersectsWith(sharkpedo.pic_tmp_shark.Bounds) Then
+
+                        'Lose a life
+                        Game_lifeboatDeath()
+
+                    End If
+
+                Next
+
+            End If
+
+            'If exist a Coast Guard Ship
+            If cg_shipcount > 0 Then
+
+                'Coast Guard Ship Ricochet
+                'It should be noted that the image is not rectangular
+                If lifeboat.pic_tmp_lifeboat.Bounds.IntersectsWith(pic_cg_ship.Bounds) Then
+
+                    'Check current speak
+                    If lb_speedometer <= 10 Then
+
+                        If seatscount > 0 Then
+
+                            Select Case seatscount
+
+                                'One Castaway
+                                Case 1
+
+                                    points += 10
+                                    seatscount = 0
+                                    Game_TsRefresh()
+
+                                'Two Castaways
+                                Case 2
+
+                                    points += 20
+                                    seatscount = 0
+                                    Game_TsRefresh()
+
+                                'Three Castaways
+                                Case 3
+
+                                    points += 30
+                                    seatscount = 0
+                                    Game_TsRefresh()
+
+                            End Select
+
+                        End If
+
+                        'Ricochet
+                        lifeboat.Lifeboat_Ricochet()
+
+                    Else
+
+                        'Lose a life
+                        Game_lifeboatDeath()
+
+                    End If
+
+
+                End If
+
             End If
 
         End If
@@ -390,9 +470,14 @@
     'Game controllers
 
     'Game Estatus Controller
-    Sub Game_Estatus(estatus As Integer)
+    Sub Game_Status(estatus As Integer)
 
         Select Case estatus
+
+            'New Game
+            Case 2
+
+                Application.Restart()
 
             'Start Game
             Case 1
@@ -408,6 +493,14 @@
 
                 'Timers Start
                 Game_Timers(1)
+
+
+            'Lose Game
+            Case 0
+
+                Game_Timers(0)
+                MessageBox.Show("¡Has pérdido mayor suerte para la próxima!" & vbNewLine &
+                        "Su puntuación alcanzada es: " & points & " puntos.")
 
         End Select
 
@@ -466,6 +559,23 @@
                 timer_cg_ship.Stop()
 
         End Select
+
+    End Sub
+
+    'Game Lifes Controller
+    Sub Game_lifeboatDeath()
+
+        lifes -= 1
+        seatscount = 0
+        fuel = 60
+        Game_TsRefresh()
+
+        'Died, remove from Marine_Rescue
+        Controls.Remove(lifeboat.pic_tmp_lifeboat)
+        lifeboat.pic_tmp_lifeboat.Dispose()
+
+        'Restore a New Lifeboat
+        Game_NewLifeboat()
 
     End Sub
 
