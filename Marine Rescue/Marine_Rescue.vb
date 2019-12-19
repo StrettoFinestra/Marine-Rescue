@@ -97,15 +97,32 @@
 
     Private Sub Timer_survivor_Tick(sender As Object, e As EventArgs) Handles timer_survivor.Tick
 
-        'Movement of all Castaway on the Sea
+        'Actions of all castaway in the sea if there is at least one
 
         If castawaycount > 0 Then
 
             For Each castaway As Survivor In vpic_castaway
+
+                'Movement of all Castaway on the Sea
                 castaway.Survivor_Movement()
+
+                'Bounce of all Castaway
+
+                For Each shipwrecks As Survivor In vpic_castaway
+                    If castaway.pic_tmp_survivor.Bounds.IntersectsWith(shipwrecks.pic_tmp_survivor.Bounds) And
+                        castaway.pic_tmp_survivor.Name <> shipwrecks.pic_tmp_survivor.Name Then
+                        castaway.Survivor_Rebound()
+                    End If
+                Next
+
             Next
 
         End If
+
+
+
+        'Touchability of all Castaway
+
 
     End Sub
 
@@ -146,7 +163,7 @@
         If castawaycount <= 10 Then
             ReDim Preserve vpic_castaway(castawaycount)
             vpic_castaway(castawaycount) = New Survivor
-            vpic_castaway(castawaycount).Survivor_Generator()
+            vpic_castaway(castawaycount).Survivor_Generator(castawaycount)
             'vpic_castaway(castawaycount) = New Survivor
             'vpic_castaway(castawaycount).Survivor_Generator()
             castawaycount += 1

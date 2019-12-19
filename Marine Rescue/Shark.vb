@@ -111,8 +111,8 @@
         End If
 
         'When Sharkpedos go to  Down
-        If y >= Marine_Rescue.pan_sea.Height - pic_tmp_shark.Height - 35 Then
-            y = Marine_Rescue.pan_sea.Height - pic_tmp_shark.Height - 35
+        If y >= Marine_Rescue.pan_sea.Height - pic_tmp_shark.Height Then
+            y = Marine_Rescue.pan_sea.Height - pic_tmp_shark.Height
             diry = -diry
         End If
 

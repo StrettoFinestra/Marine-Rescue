@@ -19,7 +19,7 @@
     'Methods
 
     'Generator 
-    Public Sub Survivor_Generator()
+    Public Sub Survivor_Generator(castawaycount)
 
 
         'Survivor Properties
@@ -29,6 +29,7 @@
         pic_tmp_survivor.Image = Image.FromFile(vsource_images(rnd.Next(0, 2)))
         pic_tmp_survivor.BackColor = System.Drawing.Color.Transparent
         pic_tmp_survivor.SizeMode = PictureBoxSizeMode.StretchImage
+        pic_tmp_survivor.Name = "castaway" & castawaycount
         'Add survivor to sea
         Marine_Rescue.pan_sea.Controls.Add(pic_tmp_survivor)
 
@@ -78,6 +79,20 @@
         pic_tmp_survivor.Location = New Point(x + dirx, y + diry)
 
     End Sub
+
+    'Increment speed force of all Survivors
+    Public Sub Suvivor_IncrementSpeed()
+        diry += 10
+        dirx += 10
+    End Sub
+
+    'Principle of action and reaction for all Survivors
+    Public Sub Survivor_Rebound()
+        dirx = -dirx
+        diry = -diry
+    End Sub
+
+
 
 
 End Class

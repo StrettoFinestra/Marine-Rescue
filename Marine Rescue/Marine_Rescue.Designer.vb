@@ -46,11 +46,11 @@ Partial Class Marine_Rescue
         Me.ts_txt_time = New System.Windows.Forms.ToolStripTextBox()
         Me.timer_time = New System.Windows.Forms.Timer(Me.components)
         Me.pan_sea = New System.Windows.Forms.Panel()
+        Me.pic_cg_ship = New System.Windows.Forms.PictureBox()
         Me.timer_cg_ship = New System.Windows.Forms.Timer(Me.components)
         Me.timer_survivor = New System.Windows.Forms.Timer(Me.components)
         Me.timer_shark = New System.Windows.Forms.Timer(Me.components)
         Me.timer_lifeboat = New System.Windows.Forms.Timer(Me.components)
-        Me.pic_cg_ship = New System.Windows.Forms.PictureBox()
         Me.ms_option_menu.SuspendLayout()
         Me.ts_ui.SuspendLayout()
         Me.pan_sea.SuspendLayout()
@@ -231,22 +231,6 @@ Partial Class Marine_Rescue
         Me.pan_sea.TabIndex = 4
         Me.pan_sea.Visible = False
         '
-        'timer_cg_ship
-        '
-        Me.timer_cg_ship.Interval = 200
-        '
-        'timer_survivor
-        '
-        Me.timer_survivor.Interval = 250
-        '
-        'timer_shark
-        '
-        Me.timer_shark.Interval = 250
-        '
-        'timer_lifeboat
-        '
-        Me.timer_lifeboat.Interval = 1000
-        '
         'pic_cg_ship
         '
         Me.pic_cg_ship.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -258,6 +242,22 @@ Partial Class Marine_Rescue
         Me.pic_cg_ship.TabIndex = 0
         Me.pic_cg_ship.TabStop = False
         Me.pic_cg_ship.Visible = False
+        '
+        'timer_cg_ship
+        '
+        Me.timer_cg_ship.Interval = 200
+        '
+        'timer_survivor
+        '
+        Me.timer_survivor.Interval = 150
+        '
+        'timer_shark
+        '
+        Me.timer_shark.Interval = 250
+        '
+        'timer_lifeboat
+        '
+        Me.timer_lifeboat.Interval = 1000
         '
         'Marine_Rescue
         '
