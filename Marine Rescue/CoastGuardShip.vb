@@ -26,8 +26,8 @@
         If ((generation = True) And (form = True) And (matter = True)) Then
 
             'Coast Guard Ship Properties
-            Marine_Rescue.pic_cg_ship.Image = Image.FromFile(vsource_images(0))
-            Marine_Rescue.pic_cg_ship.Visible = True
+            'Marine_Rescue.pic_cg_ship.Image = Image.FromFile(vsource_images(0))
+            'Marine_Rescue.pic_cg_ship.Visible = True
 
         End If
 
@@ -38,15 +38,15 @@
 
         'Current coordinates are obtained
 
-        x_coordinate = Marine_Rescue.pic_cg_ship.Location.X
-        y_coordinate = Marine_Rescue.pic_cg_ship.Location.Y
+        'x_coordinate = Marine_Rescue.pic_cg_ship.Location.X
+        'y_coordinate = Marine_Rescue.pic_cg_ship.Location.Y
 
         'Ship Movement reached the limit on the left
         If (x_coordinate <= 0) Then
 
             direction -= -1
             x_coordinate = 0
-            Console.WriteLine(direction & "en primer if")
+            'Console.WriteLine(direction & "en primer if")
         End If
 
         If (x_coordinate >= Marine_Rescue.pan_sea.Width - 35) Then
@@ -57,8 +57,8 @@
 
         End If
 
-        Marine_Rescue.pic_cg_ship.Location = New Point(x_coordinate - 10, y_coordinate)
-        Console.WriteLine(matter)
+        'Marine_Rescue.pic_cg_ship.Location = New Point(x_coordinate - 10, y_coordinate)
+        'Console.WriteLine(matter)
 
     End Sub
 

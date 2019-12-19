@@ -7,12 +7,13 @@
     Dim shark As New Shark
     Dim ship As New CoastGuardShip
     Dim time As Integer = 0
-    Dim Points As Integer = 0
+    Dim points As Integer = 0
     Dim level As Integer = 0
     Dim lifes As Integer = 0
     Dim fuel As Integer = 0
     Dim sharkcount As Integer = 0
     Dim survivorcount As Integer = 0
+    Dim seatscount As Integer = 0
 
     'Construct
     Public Sub New()
@@ -63,14 +64,19 @@
                         "Cédula: 8-923-938")
     End Sub
 
+    'ToolStripMenuItem
+    Sub ToolStripMenuItem_Estatus(sentinel As Boolean)
+        tsmi_start.Enabled = sentinel
+    End Sub
+
     'Timers
 
-    'Survivor Timer
+    'Time Timer
     Private Sub Timer_time_Tick(sender As Object, e As EventArgs) Handles timer_time.Tick
 
         'Attributes
         time += 1
-        txt_time.Text = CStr(time)
+        ts_txt_time.Text = CStr(time)
 
         'Validations
         If survivorcount < 10 And time Mod 5 = 0 Then
@@ -80,17 +86,26 @@
 
     End Sub
 
-    'CoastGuard Ship Timer
+    'Survivor Timer
+    Private Sub Timer_survivor_Tick(sender As Object, e As EventArgs) Handles timer_survivor.Tick
 
+    End Sub
+
+    'Shark Timer
+    Private Sub Timer_shark_Tick(sender As Object, e As EventArgs) Handles timer_shark.Tick
+
+    End Sub
+
+    'Lifeboat Timer
+    Private Sub Timer_lifeboat_Tick(sender As Object, e As EventArgs) Handles timer_lifeboat.Tick
+
+    End Sub
+
+    'CoastGuard Ship Timer
     Private Sub Timer_cg_ship_Tick(sender As Object, e As EventArgs) Handles timer_cg_ship.Tick
 
         ship.Ship_Movement()
 
-    End Sub
-
-    'ToolStripMenuItem
-    Sub ToolStripMenuItem_Estatus(sentinel As Boolean)
-        tsmi_start.Enabled = sentinel
     End Sub
 
     'Game events controller
@@ -105,7 +120,7 @@
                 ts_txt_points.Text = "0"
                 ts_txt_level.Text = "0"
                 ts_txt_lifes.Text = "5"
-                ts_txt_seating.Text = "3"
+                ts_txt_seating.Text = "0 / 3"
                 ts_txt_fuel.Text = "60"
                 ts_txt_velocimeter.Text = "0 px/s"
 
@@ -138,5 +153,6 @@
         End If
 
     End Sub
+
 
 End Class

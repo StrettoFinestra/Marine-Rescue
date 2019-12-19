@@ -127,6 +127,15 @@
     <value>437, 21</value>
   </metadata>
   <metadata name="timer_cg_ship.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>648, 18</value>
+    <value>1269, 21</value>
+  </metadata>
+  <metadata name="timer_survivor.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>625, 21</value>
+  </metadata>
+  <metadata name="timer_shark.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>850, 21</value>
+  </metadata>
+  <metadata name="timer_lifeboat.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1047, 21</value>
   </metadata>
 </root>

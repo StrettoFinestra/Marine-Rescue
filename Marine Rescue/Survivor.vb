@@ -1,7 +1,7 @@
 ﻿Public Class Survivor : Inherits Sea
 
     'Attributes
-    Dim vpic_tmp(9) As PictureBox
+    Public vpic_tmp(9) As PictureBox
     Dim vsource_images() As String = {"images\Castaway_F.png", "images\Castaway_M.png"}
     Dim rnd As Random = New Random()
 
@@ -35,5 +35,7 @@
         End If
 
     End Sub
+
+
 
 End Class
