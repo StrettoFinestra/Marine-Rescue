@@ -273,8 +273,11 @@
     Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
 
         If lifeboat.powerengine = True Then
+            Console.WriteLine("Velocidad en dirx = " & lifeboat.dirx)
+            Console.WriteLine("Velocidad en diry = " & lifeboat.diry)
 
-            If lifeboat.dirx <= 50 And lifeboat.diry <= 50 Then
+            If lifeboat.dirx <= 50 And
+                 lifeboat.diry <= 50 Then
 
                 Select Case keyData
 
