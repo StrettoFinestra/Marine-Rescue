@@ -16,7 +16,7 @@
     Public Sub New()
 
         Console.WriteLine("Instancia de CoastGuardShip, realizada correctamente")
-        dirx = -10
+        dirx = -3
         diry = 0
 
     End Sub

@@ -73,14 +73,14 @@ Partial Class Marine_Rescue
         '
         Me.tsmi_start.Font = New System.Drawing.Font("Showcard Gothic", 13.875!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tsmi_start.Name = "tsmi_start"
-        Me.tsmi_start.Size = New System.Drawing.Size(159, 54)
+        Me.tsmi_start.Size = New System.Drawing.Size(159, 50)
         Me.tsmi_start.Text = "Inicio"
         '
         'tsmi_newgame
         '
         Me.tsmi_newgame.Font = New System.Drawing.Font("Showcard Gothic", 13.875!, System.Drawing.FontStyle.Bold)
         Me.tsmi_newgame.Name = "tsmi_newgame"
-        Me.tsmi_newgame.Size = New System.Drawing.Size(293, 54)
+        Me.tsmi_newgame.Size = New System.Drawing.Size(293, 50)
         Me.tsmi_newgame.Text = "Nuevo Juego"
         '
         'tsmi_about
@@ -88,21 +88,21 @@ Partial Class Marine_Rescue
         Me.tsmi_about.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.tsmi_about.Font = New System.Drawing.Font("Showcard Gothic", 13.875!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tsmi_about.Name = "tsmi_about"
-        Me.tsmi_about.Size = New System.Drawing.Size(239, 54)
+        Me.tsmi_about.Size = New System.Drawing.Size(239, 50)
         Me.tsmi_about.Text = "Acerca de"
         '
         'tsmi_Instructions
         '
         Me.tsmi_Instructions.Font = New System.Drawing.Font("Showcard Gothic", 13.875!, System.Drawing.FontStyle.Bold)
         Me.tsmi_Instructions.Name = "tsmi_Instructions"
-        Me.tsmi_Instructions.Size = New System.Drawing.Size(330, 54)
+        Me.tsmi_Instructions.Size = New System.Drawing.Size(330, 50)
         Me.tsmi_Instructions.Text = "Instrucciones"
         '
         'ToolStripMenuItem4
         '
         Me.ToolStripMenuItem4.Font = New System.Drawing.Font("Showcard Gothic", 13.875!, System.Drawing.FontStyle.Bold)
         Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(221, 54)
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(221, 50)
         Me.ToolStripMenuItem4.Text = "Historia"
         '
         'ts_txt_points
@@ -235,9 +235,9 @@ Partial Class Marine_Rescue
         '
         Me.pic_cg_ship.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pic_cg_ship.BackColor = System.Drawing.Color.Transparent
-        Me.pic_cg_ship.Location = New System.Drawing.Point(1518, 829)
+        Me.pic_cg_ship.Location = New System.Drawing.Point(1358, 802)
         Me.pic_cg_ship.Name = "pic_cg_ship"
-        Me.pic_cg_ship.Size = New System.Drawing.Size(514, 218)
+        Me.pic_cg_ship.Size = New System.Drawing.Size(674, 245)
         Me.pic_cg_ship.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pic_cg_ship.TabIndex = 0
         Me.pic_cg_ship.TabStop = False
@@ -245,7 +245,7 @@ Partial Class Marine_Rescue
         '
         'timer_cg_ship
         '
-        Me.timer_cg_ship.Interval = 200
+        Me.timer_cg_ship.Interval = 25
         '
         'timer_survivor
         '
