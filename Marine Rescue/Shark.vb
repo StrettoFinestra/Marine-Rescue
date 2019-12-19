@@ -1,12 +1,14 @@
 ﻿Public Class Shark
 
+    '###########################################################################################################
     'Attributes
 
-    Dim pic_tmp_shark As PictureBox
-    Dim vsource_images() As String = {"images\Sharpedo.png", "images\Mega_Sharpedo.png"}
-    Dim rnd As Random = New Random()
+    Public pic_tmp_shark As PictureBox
     Public dirx, diry As Integer
+    Public vsource_images() As String = {"images\Sharpedo.png", "images\Mega_Sharpedo.png"}
+    Dim rnd As Random = New Random()
 
+    '###########################################################################################################
     'Construct
     Public Sub New()
 
@@ -16,6 +18,7 @@
 
     End Sub
 
+    '###########################################################################################################
     'Methods
 
     Public Sub Shark_Generator(counter, lvlstatus)
@@ -42,7 +45,7 @@
 
                 'Mega Sharkpedos
                 pic_tmp_shark.Image = Image.FromFile(vsource_images(1))
-                pic_tmp_shark.Size = New Size(80, 80)
+                pic_tmp_shark.Size = New Size(75, 75)
 
             End If
 
@@ -86,11 +89,10 @@
             pic_tmp_shark.Location = New Point(x, y)
             pic_tmp_shark.BackColor = System.Drawing.Color.Transparent
             pic_tmp_shark.SizeMode = PictureBoxSizeMode.StretchImage
-
+            pic_tmp_shark.Name = "Sharkpedo" & counter
 
             'Add Sharkpedo to sea
             Marine_Rescue.pan_sea.Controls.Add(pic_tmp_shark)
-
 
         End If
 
@@ -131,6 +133,18 @@
         'Sharkpedos Movement
         pic_tmp_shark.Location = New Point(x + dirx, y + diry)
 
+    End Sub
+
+    'Increment speed force of all Sharkpedos
+    Public Sub Shark_IncrementSpeed()
+        diry += 10
+        dirx += 10
+    End Sub
+
+    'Principle of action and reaction for all Sharkpedos
+    Public Sub Shark_Ricochet()
+        dirx = -dirx
+        diry = -diry
     End Sub
 
 End Class

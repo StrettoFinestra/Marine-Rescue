@@ -1,5 +1,6 @@
 ﻿Public Class Sea
 
+    '###########################################################################################################
     'Attributes
 
     Public Const generation As Boolean = True
@@ -7,10 +8,13 @@
     Public Const form As Boolean = True
     Public Const type_universe As String = "F.U.W.E" 'Finite Universe Without Edge
 
+    '###########################################################################################################
     'Construct
     Public Sub New()
         Console.WriteLine("Instancia de Sea, realizada correctamente")
     End Sub
+
+    '###########################################################################################################
     'Methods
 
     'Generator 

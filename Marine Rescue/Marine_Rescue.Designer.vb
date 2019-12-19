@@ -40,8 +40,8 @@ Partial Class Marine_Rescue
         Me.ts_lbl_points = New System.Windows.Forms.ToolStripLabel()
         Me.ts_lbl_fuel = New System.Windows.Forms.ToolStripLabel()
         Me.ts_txt_fuel = New System.Windows.Forms.ToolStripTextBox()
-        Me.ts_lbl_velocimeter = New System.Windows.Forms.ToolStripLabel()
-        Me.ts_txt_velocimeter = New System.Windows.Forms.ToolStripTextBox()
+        Me.ts_lbl_speedometer = New System.Windows.Forms.ToolStripLabel()
+        Me.ts_txt_speedometer = New System.Windows.Forms.ToolStripTextBox()
         Me.ts_lbl_time = New System.Windows.Forms.ToolStripLabel()
         Me.ts_txt_time = New System.Windows.Forms.ToolStripTextBox()
         Me.timer_time = New System.Windows.Forms.Timer(Me.components)
@@ -73,14 +73,14 @@ Partial Class Marine_Rescue
         '
         Me.tsmi_start.Font = New System.Drawing.Font("Showcard Gothic", 13.875!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tsmi_start.Name = "tsmi_start"
-        Me.tsmi_start.Size = New System.Drawing.Size(159, 50)
+        Me.tsmi_start.Size = New System.Drawing.Size(159, 54)
         Me.tsmi_start.Text = "Inicio"
         '
         'tsmi_newgame
         '
         Me.tsmi_newgame.Font = New System.Drawing.Font("Showcard Gothic", 13.875!, System.Drawing.FontStyle.Bold)
         Me.tsmi_newgame.Name = "tsmi_newgame"
-        Me.tsmi_newgame.Size = New System.Drawing.Size(293, 50)
+        Me.tsmi_newgame.Size = New System.Drawing.Size(293, 54)
         Me.tsmi_newgame.Text = "Nuevo Juego"
         '
         'tsmi_about
@@ -88,21 +88,21 @@ Partial Class Marine_Rescue
         Me.tsmi_about.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.tsmi_about.Font = New System.Drawing.Font("Showcard Gothic", 13.875!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tsmi_about.Name = "tsmi_about"
-        Me.tsmi_about.Size = New System.Drawing.Size(239, 50)
+        Me.tsmi_about.Size = New System.Drawing.Size(239, 54)
         Me.tsmi_about.Text = "Acerca de"
         '
         'tsmi_Instructions
         '
         Me.tsmi_Instructions.Font = New System.Drawing.Font("Showcard Gothic", 13.875!, System.Drawing.FontStyle.Bold)
         Me.tsmi_Instructions.Name = "tsmi_Instructions"
-        Me.tsmi_Instructions.Size = New System.Drawing.Size(330, 50)
+        Me.tsmi_Instructions.Size = New System.Drawing.Size(330, 54)
         Me.tsmi_Instructions.Text = "Instrucciones"
         '
         'ToolStripMenuItem4
         '
         Me.ToolStripMenuItem4.Font = New System.Drawing.Font("Showcard Gothic", 13.875!, System.Drawing.FontStyle.Bold)
         Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(221, 50)
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(221, 54)
         Me.ToolStripMenuItem4.Text = "Historia"
         '
         'ts_txt_points
@@ -159,7 +159,7 @@ Partial Class Marine_Rescue
         Me.ts_ui.Font = New System.Drawing.Font("Showcard Gothic", 13.875!, System.Drawing.FontStyle.Bold)
         Me.ts_ui.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ts_ui.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.ts_ui.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ts_lbl_points, Me.ts_txt_points, Me.ts_lbl_level, Me.ts_txt_level, Me.ts_lbl_lifes, Me.ts_txt_lifes, Me.ts_lbl_seating, Me.ts_txt_seating, Me.ts_lbl_fuel, Me.ts_txt_fuel, Me.ts_lbl_velocimeter, Me.ts_txt_velocimeter, Me.ts_lbl_time, Me.ts_txt_time})
+        Me.ts_ui.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ts_lbl_points, Me.ts_txt_points, Me.ts_lbl_level, Me.ts_txt_level, Me.ts_lbl_lifes, Me.ts_txt_lifes, Me.ts_lbl_seating, Me.ts_txt_seating, Me.ts_lbl_fuel, Me.ts_txt_fuel, Me.ts_lbl_speedometer, Me.ts_txt_speedometer, Me.ts_lbl_time, Me.ts_txt_time})
         Me.ts_ui.Location = New System.Drawing.Point(0, 54)
         Me.ts_ui.Name = "ts_ui"
         Me.ts_ui.Size = New System.Drawing.Size(2032, 52)
@@ -187,18 +187,18 @@ Partial Class Marine_Rescue
         Me.ts_txt_fuel.ReadOnly = True
         Me.ts_txt_fuel.Size = New System.Drawing.Size(128, 52)
         '
-        'ts_lbl_velocimeter
+        'ts_lbl_speedometer
         '
-        Me.ts_lbl_velocimeter.Name = "ts_lbl_velocimeter"
-        Me.ts_lbl_velocimeter.Size = New System.Drawing.Size(284, 46)
-        Me.ts_lbl_velocimeter.Text = "Velocímetro"
+        Me.ts_lbl_speedometer.Name = "ts_lbl_speedometer"
+        Me.ts_lbl_speedometer.Size = New System.Drawing.Size(284, 46)
+        Me.ts_lbl_speedometer.Text = "Velocímetro"
         '
-        'ts_txt_velocimeter
+        'ts_txt_speedometer
         '
-        Me.ts_txt_velocimeter.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.ts_txt_velocimeter.Name = "ts_txt_velocimeter"
-        Me.ts_txt_velocimeter.ReadOnly = True
-        Me.ts_txt_velocimeter.Size = New System.Drawing.Size(80, 52)
+        Me.ts_txt_speedometer.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ts_txt_speedometer.Name = "ts_txt_speedometer"
+        Me.ts_txt_speedometer.ReadOnly = True
+        Me.ts_txt_speedometer.Size = New System.Drawing.Size(80, 52)
         '
         'ts_lbl_time
         '
@@ -235,9 +235,9 @@ Partial Class Marine_Rescue
         '
         Me.pic_cg_ship.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pic_cg_ship.BackColor = System.Drawing.Color.Transparent
-        Me.pic_cg_ship.Location = New System.Drawing.Point(1635, 851)
+        Me.pic_cg_ship.Location = New System.Drawing.Point(1518, 829)
         Me.pic_cg_ship.Name = "pic_cg_ship"
-        Me.pic_cg_ship.Size = New System.Drawing.Size(397, 196)
+        Me.pic_cg_ship.Size = New System.Drawing.Size(514, 218)
         Me.pic_cg_ship.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pic_cg_ship.TabIndex = 0
         Me.pic_cg_ship.TabStop = False
@@ -257,7 +257,7 @@ Partial Class Marine_Rescue
         '
         'timer_lifeboat
         '
-        Me.timer_lifeboat.Interval = 1000
+        Me.timer_lifeboat.Interval = 20
         '
         'Marine_Rescue
         '
@@ -297,8 +297,8 @@ Partial Class Marine_Rescue
     Friend WithEvents ts_ui As ToolStrip
     Friend WithEvents ts_lbl_fuel As ToolStripLabel
     Friend WithEvents ts_txt_fuel As ToolStripTextBox
-    Friend WithEvents ts_lbl_velocimeter As ToolStripLabel
-    Friend WithEvents ts_txt_velocimeter As ToolStripTextBox
+    Friend WithEvents ts_lbl_speedometer As ToolStripLabel
+    Friend WithEvents ts_txt_speedometer As ToolStripTextBox
     Friend WithEvents tsmi_Instructions As ToolStripMenuItem
     Friend WithEvents timer_time As Timer
     Friend WithEvents ToolStripMenuItem4 As ToolStripMenuItem
