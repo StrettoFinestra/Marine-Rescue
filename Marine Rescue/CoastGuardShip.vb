@@ -5,16 +5,16 @@
     Public Const generation As Boolean = True
     Public Const matter As Boolean = True
     Public Const form As Boolean = True
+    Dim pic_tmp_cg_ship As PictureBox
     Dim vsource_images() As String = {"images\CoastGuard_Ship.png"}
-    Public x_coordinate, y_coordinate As Integer
-    Public xi_coordinate, yi_coordinate As Integer
-    Public w_ship, h_ship, direction As Integer
-    Public test As Boolean
+    Public dirx, diry As Integer
 
     'Construct
     Public Sub New()
 
         Console.WriteLine("Instancia de CoastGuardShip, realizada correctamente")
+        dirx = -10
+        diry = 0
 
     End Sub
 
@@ -37,28 +37,22 @@
 
     Public Sub Ship_Movement()
 
-        'Current coordinates are obtained
+        'Current Coordinate
+        Dim w, x, y As Integer
+        w = Marine_Rescue.pic_cg_ship.Width
+        x = Marine_Rescue.pic_cg_ship.Location.X
+        y = Marine_Rescue.pic_cg_ship.Location.Y
 
-        x_coordinate = Marine_Rescue.pic_cg_ship.Location.X
-        y_coordinate = Marine_Rescue.pic_cg_ship.Location.Y
+        'Coast Guard Ship transfer of the negative zone completely
 
-        'Ship Movement reached the limit on the left
-        If (x_coordinate <= 0) Then
+        If x <= -w Then
 
-            direction -= -10
-            x_coordinate = 0
-            'Console.WriteLine(direction & "en primer if")
-        End If
-
-        If (x_coordinate >= Marine_Rescue.pan_sea.Width - 35) Then
-
-            'If the ship crosses the edge of the sea it restarts position
-            direction += 10
-            x_coordinate = Marine_Rescue.pan_sea.Width - 35
+            x = Marine_Rescue.pan_sea.Width + w
 
         End If
 
-        Marine_Rescue.pic_cg_ship.Location = New Point(x_coordinate - 10, y_coordinate)
+        Marine_Rescue.pic_cg_ship.Location = New Point(x + dirx, y + diry)
+
         'Console.WriteLine(matter)
 
     End Sub
