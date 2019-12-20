@@ -13,8 +13,8 @@
     Public Sub New()
 
         Console.WriteLine("Instancia de Shark, realizada correctamente")
-        diry = 10
-        dirx = 10
+        diry = 0
+        dirx = 0
 
     End Sub
 

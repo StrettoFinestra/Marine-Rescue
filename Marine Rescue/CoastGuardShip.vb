@@ -9,14 +9,14 @@
     Dim pic_tmp_cg_ship As PictureBox
     Dim vsource_images() As String = {"images\CoastGuard_Ship.png"}
     Public dirx, diry As Integer
-    Public x_coordinate, y_coordinate As Integer
+    Public x_coordinate As Integer
 
     '###########################################################################################################
     'Construct
     Public Sub New()
 
         Console.WriteLine("Instancia de CoastGuardShip, realizada correctamente")
-        dirx = -3
+        dirx = -10
         diry = 0
 
     End Sub
@@ -61,13 +61,14 @@
 
     End Sub
 
-    Public Sub Ship_Radar()
+    Public Function Ship_Radar()
 
         'Calculate current coordinates
         x_coordinate = Marine_Rescue.pic_cg_ship.Location.X
-        y_coordinate = Marine_Rescue.pic_cg_ship.Location.Y
 
-    End Sub
+        Return x_coordinate
+
+    End Function
 
 
 End Class

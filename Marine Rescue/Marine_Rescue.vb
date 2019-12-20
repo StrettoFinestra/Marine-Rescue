@@ -9,6 +9,7 @@
     Public shark As New Shark
     Public lifeboat As New Lifeboat
     Public ship As New CoastGuardShip
+    Dim rnd As Random = New Random()
 
     'Data Structures
     Public vpic_castaway(0) As Survivor
@@ -29,6 +30,8 @@
     Public castawaycount As Integer = 0
     Public lifeboatcount As Integer = 0
     Public cg_shipcount As Integer = 0
+    Public trackerpoints As Integer = 0
+    Public castawaysaved As Integer = 0
 
     '###########################################################################################################
     'Construct
@@ -61,13 +64,27 @@
 
     'Instructions
     Private Sub Tsmi_Instructions_Click(sender As Object, e As EventArgs) Handles tsmi_Instructions.Click
-        Game_NewCastaway()
-        Game_LevelUp()
+
+        MessageBox.Show("Es difícil salvar a los sobrevivientes con un Barco poco maniobrable como el que tenemos..." & vbNewLine &
+                        "¡Utiliza el bote salvavidas para llevar los sobrevivientes al barco!" & vbNewLine &
+                        " " & vbNewLine &
+                        "Recuerda: " & vbNewLine &
+                        "- La capacidad máxima es de 3 sobrevivientes" & vbNewLine &
+                        "- Cada sobreviente sumará 10 puntos " & vbNewLine &
+                        "- Puedes recargar la gasolina en nuestro Barco de la Guardia Costera" & vbNewLine &
+                        "- Ten cuidado con la duración de la gasolina, es de máximo 60 segundos si se te acaba la gasolina te arrastrará la corriente" & vbNewLine &
+                        "- La fauna del lugar puede ser un peligro para el bote salvavidas, si te encuentras con un tiburón
+                           se destruirá el bote y pero tenemos máximo 5" & vbNewLine &
+                        "- Recuerda bajar la velocidad a 10 nudos o px/s para evitar destruir tu bote salvavidas." & vbNewLine &
+                        " " & vbNewLine &
+                        "¡ADVERTENCIA!: " & vbNewLine &
+                        "- No te coloques enfrente del Barco, crea fuertes turbulencias que te pueden atrapar, si te quedas atrapado, no luches pues te ahogarás ")
 
     End Sub
 
     'History
     Private Sub Tsmi_history_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
+
         MessageBox.Show("Un buque sufrió un accidente y los sobrevivientes están" & vbNewLine &
                         "en el mar. Hay que rescatarlos en una lancha de goma.")
     End Sub
@@ -107,14 +124,36 @@
         End If
 
         'Validations
-        If castawaycount < 10 And time Mod 5 = 0 Then
-            Game_NewCastaway()
+        If time Mod 5 = 0 Then
+
+            If castawaycount <= 9 Then
+
+                Game_NewCastaway()
+
+            Else
+
+                'Restore a castaway's spirits
+                For Each castaway As Survivor In vpic_castaway
+
+                    'Debug.WriteLine("Respawn a Castaway Success")
+                    If castaway.pic_tmp_survivor.Visible = False Then
+
+                        castaway.pic_tmp_survivor.Visible = True
+                        castaway.pic_tmp_survivor.AccessibleName = "alive"
+                        castaway.pic_tmp_survivor.Image = Image.FromFile(castaway.vsource_images(rnd.Next(0, 2)))
+                        Exit For
+
+                    End If
+
+                Next
+
+            End If
+
         End If
 
     End Sub
 
     'Castaways Timer
-
     Private Sub Timer_survivor_Tick(sender As Object, e As EventArgs) Handles timer_survivor.Tick
 
         'Actions of all castaway in the sea if there is at least one
@@ -199,8 +238,10 @@
                             castaway.pic_tmp_survivor.AccessibleName = "alive" Then
 
                             'Disappears Castaway, becomes a spirit
+                            castaway.pic_tmp_survivor.Visible = False
                             castaway.pic_tmp_survivor.AccessibleName = "hidden"
                             castaway.pic_tmp_survivor.Image = Nothing
+
 
                         End If
 
@@ -249,6 +290,7 @@
                             Game_TsRefresh()
 
                             'Disappears Castaway, becomes a spirit
+                            castaway.pic_tmp_survivor.Visible = False
                             castaway.pic_tmp_survivor.AccessibleName = "hidden"
                             castaway.pic_tmp_survivor.Image = Nothing
 
@@ -259,7 +301,6 @@
                 Next
 
             End If
-
 
 
             'Death
@@ -286,7 +327,7 @@
                 'It should be noted that the image is not rectangular
                 If lifeboat.pic_tmp_lifeboat.Bounds.IntersectsWith(pic_cg_ship.Bounds) Then
 
-                    'Check current speak
+                    'Check current speed
                     If lb_speedometer <= 10 Then
 
                         If seatscount > 0 Then
@@ -298,25 +339,35 @@
 
                                     points += 10
                                     seatscount = 0
+                                    castawaysaved += 1
                                     Game_TsRefresh()
+                                    Game_LevelUp()
 
                                 'Two Castaways
                                 Case 2
 
                                     points += 20
                                     seatscount = 0
+                                    castawaysaved += 2
                                     Game_TsRefresh()
+                                    Game_LevelUp()
 
                                 'Three Castaways
                                 Case 3
 
                                     points += 30
                                     seatscount = 0
+                                    castawaysaved += 3
                                     Game_TsRefresh()
+                                    Game_LevelUp()
 
                             End Select
 
                         End If
+
+                        'Reload Fuel
+                        fuel = 60
+                        Game_TsRefresh()
 
                         'Ricochet
                         lifeboat.Lifeboat_Ricochet()
@@ -460,6 +511,7 @@
     'Lifeboat Generator
     Sub Game_NewLifeboat()
         lifeboat.Lifeboat_Generator()
+        lifeboat.powerengine = True
     End Sub
 
     'CoastGuard Ship Generator
@@ -474,6 +526,14 @@
 
         Select Case estatus
 
+            'Win Game
+            Case 3
+
+                Game_Timers(0)
+                MessageBox.Show("¡Enhorabuena has ganado!" & vbNewLine &
+                                "Nuestro barco está a tope de la cantidad de sobrevivientes a bordo" & vbNewLine &
+                                "Su puntuación alcanzada es: " & points & " puntos." & vbNewLine &
+                                "Sobrevivientes Rescatados: " & castawaysaved & " sobrevivientes.")
             'New Game
             Case 2
 
@@ -494,13 +554,13 @@
                 'Timers Start
                 Game_Timers(1)
 
-
             'Lose Game
             Case 0
 
                 Game_Timers(0)
                 MessageBox.Show("¡Has pérdido mayor suerte para la próxima!" & vbNewLine &
-                        "Su puntuación alcanzada es: " & points & " puntos.")
+                        "Su puntuación alcanzada es: " & points & " puntos." & vbNewLine &
+                        "Sobrevivientes Rescatados: " & castawaysaved & " naúfragos.")
 
         End Select
 
@@ -568,6 +628,7 @@
         lifes -= 1
         seatscount = 0
         fuel = 60
+        lb_speedometer = 0
         Game_TsRefresh()
 
         'Died, remove from Marine_Rescue
@@ -582,17 +643,52 @@
     'Game Level Up Controller
     Sub Game_LevelUp()
 
-        'Call to shark Generator and level up
-        'Level 0 its only for reference
-        level += 1
-        ts_txt_level.Text = CStr(level)
+        Dim difference As Integer = 0
+        difference = points - trackerpoints
 
-        'Validations
-        If sharkcount < 10 Then
+        If points Mod 100 = 0 Or difference >= 100 Then
 
-            Game_NewSharpedo()
+            'Call to shark Generator and level up
+            'Level 0 its only for reference
+            level += 1
 
-        End If
+            'Check current status of the game
+            If level = 11 Then
+                'Win Game
+                Game_Status(3)
+
+            Else
+                'Refresh Tool Strip Menu
+                Game_TsRefresh()
+
+            End If
+
+
+            'Increment Speed of elements
+            'if exist a castaway on the sea
+            If castawaycount > 0 Then
+
+                For Each castaway As Survivor In vpic_castaway
+                    castaway.Suvivor_IncrementSpeed()
+                Next
+            End If
+
+            'Validations
+            If sharkcount < 10 Then
+
+                Game_NewSharpedo()
+
+            End If
+
+            'Increment Sharkpedo's Speed
+            For Each sharkpedo As Shark In vpic_shark
+                sharkpedo.Shark_IncrementSpeed()
+            Next
+
+            'Take the last points level up quantity
+            trackerpoints = points
+
+            End If
 
     End Sub
 

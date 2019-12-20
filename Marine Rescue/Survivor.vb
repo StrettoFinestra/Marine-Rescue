@@ -100,7 +100,4 @@
         diry = -diry
     End Sub
 
-
-
-
 End Class

@@ -3,6 +3,7 @@
     '###########################################################################################################
     'Attributes
     Public pic_tmp_lifeboat As PictureBox
+    Public ship As New CoastGuardShip
     Public vsource_images() As String = {"images\north_lifeboat.png", "images\northeast_lifeboat.png",
                                         "images\east_lifeboat.png", "images\southeast_lifeboat.png",
                                         "images\south_lifeboat.png", "images\southwest_lifeboat.png",
@@ -29,14 +30,25 @@
     Public Sub Lifeboat_Generator()
 
         'cg_ship_coordinates
+        Dim cg_shipx As Integer
+
         'Lifeboat Properties
         pic_tmp_lifeboat = New PictureBox()
         pic_tmp_lifeboat.Size = New Size(50, 120)
-        pic_tmp_lifeboat.Location = New Point(0, 0)
+
+        'Check the current position of the Coast Guard Ship
+
+        cg_shipx = ship.Ship_Radar()
+
+        pic_tmp_lifeboat.Location = New Point(cg_shipx, Marine_Rescue.pan_sea.Height - Marine_Rescue.pic_cg_ship.Height - pic_tmp_lifeboat.Height - 10)
         sentinel_vsource = 0
         pic_tmp_lifeboat.Image = Image.FromFile(vsource_images(sentinel_vsource))
         pic_tmp_lifeboat.BackColor = System.Drawing.Color.Transparent
         pic_tmp_lifeboat.SizeMode = PictureBoxSizeMode.StretchImage
+
+        'Restore Speed
+        diry = 0
+        dirx = 0
 
         'Add Lifeboat to pan_sea domains
         Marine_Rescue.pan_sea.Controls.Add(pic_tmp_lifeboat)

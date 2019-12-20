@@ -23,6 +23,7 @@ Partial Class Marine_Rescue
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Marine_Rescue))
         Me.ms_option_menu = New System.Windows.Forms.MenuStrip()
         Me.tsmi_start = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmi_newgame = New System.Windows.Forms.ToolStripMenuItem()
@@ -46,11 +47,11 @@ Partial Class Marine_Rescue
         Me.ts_txt_time = New System.Windows.Forms.ToolStripTextBox()
         Me.timer_time = New System.Windows.Forms.Timer(Me.components)
         Me.pan_sea = New System.Windows.Forms.Panel()
-        Me.pic_cg_ship = New System.Windows.Forms.PictureBox()
         Me.timer_cg_ship = New System.Windows.Forms.Timer(Me.components)
         Me.timer_survivor = New System.Windows.Forms.Timer(Me.components)
         Me.timer_shark = New System.Windows.Forms.Timer(Me.components)
         Me.timer_lifeboat = New System.Windows.Forms.Timer(Me.components)
+        Me.pic_cg_ship = New System.Windows.Forms.PictureBox()
         Me.ms_option_menu.SuspendLayout()
         Me.ts_ui.SuspendLayout()
         Me.pan_sea.SuspendLayout()
@@ -222,34 +223,22 @@ Partial Class Marine_Rescue
         Me.pan_sea.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.pan_sea.BackColor = System.Drawing.SystemColors.Highlight
+        Me.pan_sea.BackColor = System.Drawing.Color.DodgerBlue
         Me.pan_sea.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pan_sea.Controls.Add(Me.pic_cg_ship)
-        Me.pan_sea.Location = New System.Drawing.Point(0, 109)
+        Me.pan_sea.Location = New System.Drawing.Point(0, 100)
         Me.pan_sea.Name = "pan_sea"
-        Me.pan_sea.Size = New System.Drawing.Size(2032, 1047)
+        Me.pan_sea.Size = New System.Drawing.Size(2032, 1056)
         Me.pan_sea.TabIndex = 4
         Me.pan_sea.Visible = False
         '
-        'pic_cg_ship
-        '
-        Me.pic_cg_ship.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.pic_cg_ship.BackColor = System.Drawing.Color.Transparent
-        Me.pic_cg_ship.Location = New System.Drawing.Point(1358, 802)
-        Me.pic_cg_ship.Name = "pic_cg_ship"
-        Me.pic_cg_ship.Size = New System.Drawing.Size(674, 245)
-        Me.pic_cg_ship.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pic_cg_ship.TabIndex = 0
-        Me.pic_cg_ship.TabStop = False
-        Me.pic_cg_ship.Visible = False
-        '
         'timer_cg_ship
         '
-        Me.timer_cg_ship.Interval = 25
+        Me.timer_cg_ship.Interval = 250
         '
         'timer_survivor
         '
-        Me.timer_survivor.Interval = 150
+        Me.timer_survivor.Interval = 250
         '
         'timer_shark
         '
@@ -257,17 +246,32 @@ Partial Class Marine_Rescue
         '
         'timer_lifeboat
         '
-        Me.timer_lifeboat.Interval = 20
+        Me.timer_lifeboat.Interval = 150
+        '
+        'pic_cg_ship
+        '
+        Me.pic_cg_ship.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.pic_cg_ship.BackColor = System.Drawing.Color.Transparent
+        Me.pic_cg_ship.Location = New System.Drawing.Point(1358, 811)
+        Me.pic_cg_ship.Name = "pic_cg_ship"
+        Me.pic_cg_ship.Size = New System.Drawing.Size(674, 245)
+        Me.pic_cg_ship.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pic_cg_ship.TabIndex = 0
+        Me.pic_cg_ship.TabStop = False
+        Me.pic_cg_ship.Visible = False
         '
         'Marine_Rescue
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(2032, 1154)
-        Me.Controls.Add(Me.pan_sea)
         Me.Controls.Add(Me.ts_ui)
         Me.Controls.Add(Me.ms_option_menu)
+        Me.Controls.Add(Me.pan_sea)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MainMenuStrip = Me.ms_option_menu
         Me.Name = "Marine_Rescue"
