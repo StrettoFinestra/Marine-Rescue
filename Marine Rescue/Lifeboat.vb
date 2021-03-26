@@ -40,7 +40,7 @@
 
         cg_shipx = ship.Ship_Radar()
 
-        pic_tmp_lifeboat.Location = New Point(cg_shipx, Marine_Rescue.pan_sea.Height - Marine_Rescue.pic_cg_ship.Height - pic_tmp_lifeboat.Height - 10)
+        pic_tmp_lifeboat.Location = New Point(cg_shipx, Marine_Rescue.pan_sea.Height - Marine_Rescue.pic_cg_ship.Height - pic_tmp_lifeboat.Height - 100)
         sentinel_vsource = 0
         pic_tmp_lifeboat.Image = Image.FromFile(vsource_images(sentinel_vsource))
         pic_tmp_lifeboat.BackColor = System.Drawing.Color.Transparent
